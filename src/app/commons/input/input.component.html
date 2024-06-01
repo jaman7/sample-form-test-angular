@@ -1,0 +1,29 @@
+<nz-input-group
+  class="input-group input-component"
+  [nzSize]="'small'"
+  [ngClass]="[
+    getClassValid(),
+    isDisabled() ? 'input-component--disabled' : '',
+    config.readonly ? 'read-only' : '',
+    config.type,
+    config.customClass ?? ''
+  ]"
+>
+  <input
+    *ngIf="formControl"
+    ngDefaultControl
+    [formControl]="formControl"
+    (ngModelChange)="modelChange($event)"
+    nz-input
+    [type]="config.type ?? 'text'"
+    [class]="config.customClass"
+    [attr.placeholder]="config.placeholder | translate"
+    [readonly]="config.readonly"
+    autocomplete="off"
+    [attr.maxLength]="config.maxLength"
+    (blur)="onBlur()"
+    [attr.step]="config.step ?? 1"
+    [attr.min]="config.min"
+    [attr.max]="config.max"
+  />
+</nz-input-group>

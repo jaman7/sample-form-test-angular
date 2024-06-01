@@ -1,0 +1,24 @@
+{
+  "table": {
+    "code": "Code",
+    "name": "Name",
+    "status": "Status",
+    "description": "Description"
+  },
+  "modal": {
+    "add": "Add Truck",
+    "edit": "Edit Truck",
+    "view": "View Truck",
+    "form": {
+      "code": "Code",
+      "name": "Name",
+      "statusId": "Status",
+      "description": "Description",
+      "submit": "Submit",
+      "cancel": "Cancel"
+    }
+  },
+  "toastr": {
+    "errorDeletedTruck": "Failed to delete the truck."
+  }
+}

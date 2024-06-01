@@ -1,0 +1,13 @@
+<app-button [config]="{ name: 'common.buttons.add', customClass: 'mb-3' }" (btnClickId)="onClickAdd()" />
+
+<app-table
+  [quantity]="5"
+  [range]="[5, 100, 5]"
+  [totalRecords]="tableTotalRecords"
+  [columns]="(columns$ | async) ?? []"
+  [rows]="(rows$ | async) ?? previousValue"
+  [showControls]="true"
+  (buttonEvent)="onDocAction($event)"
+/>
+
+<app-trucks-edit *ngIf="modal.visible" [modal]="modal" (closeModal)="onCloseModal()" />

@@ -1,0 +1,33 @@
+{
+  "common": {
+    "buttons": {
+      "add": "Add",
+      "cancel": "Cancel",
+      "save": "Save",
+      "trucks": "Trucks"
+    },
+    "table": {
+      "currentPageReportTemplate": "{first} - {last} from {totalRecords}",
+      "operations": "Operations",
+      "tooltip": {
+        "eye": "Browse",
+        "edit": "Edit",
+        "delete": "Delete"
+      }
+    },
+    "toastr": {
+      "successfulDeleted": "The entry has been deleted",
+      "successDataSaved": "The data has been saved correctly",
+      "successfulUpdated": "The data has been updated correctly",
+      "failure": "An error occured",
+      "noValidForm": "The form was completed incorrectly"
+    }
+  },
+  "validation": {
+    "error": {
+      "required": "Required value",
+      "minlength": "Too few characters entered, min: {{value}}",
+      "duplicatedError": "The data must be unique"
+    }
+  }
+}

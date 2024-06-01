@@ -1,0 +1,56 @@
+%hover {
+  border-color: $color-light-blue !important;
+  box-shadow: none !important;
+}
+
+.input-component {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  padding: 5px !important;
+  border: 1.5px solid $color-lighter-blue;
+  border-radius: 5px;
+  font-size: $form-font-size;
+  font-family: $fontRoboto;
+  background-color: $color-white;
+  min-width: 80px;
+
+  &:hover:not(.input-component--disabled),
+  &:focus:not(.input-component--disabled),
+  &:target:not(.input-component--disabled),
+  &:active:not(.input-component--disabled),
+  &:focus-within:not(.input-component--disabled) {
+    @extend %hover;
+
+    input {
+      cursor: pointer;
+
+      @extend %hover;
+    }
+  }
+
+  input {
+    line-height: initial;
+    height: auto;
+    width: 100% !important;
+    color: $color-dark-color;
+    font-size: $form-font-size;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    font-family: inherit;
+    border: none;
+
+    &:disabled {
+      cursor: not-allowed;
+      color: $color-dark-color;
+    }
+
+    &::placeholder {
+      font-size: $form-font-size - 2;
+      font-family: inherit;
+    }
+  }
+
+  @extend %invalid-form;
+}

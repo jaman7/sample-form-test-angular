@@ -1,0 +1,117 @@
+$border-size: 1px;
+$font-size: 12px;
+
+.table-component {
+  font-family: $fontRoboto;
+  font-size: $font-size;
+
+  .buttons-container {
+    display: flex;
+    justify-content: center;
+    padding: 2px;
+
+    button {
+      margin-right: 0.75rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .p-datatable {
+    &-thead,
+    &-tbody {
+      tr {
+        th,
+        td {
+          padding: 0 0.5rem;
+          border: 1px solid $color-gray;
+        }
+      }
+    }
+
+    &-thead {
+      tr {
+        th {
+          text-align: center;
+          font-weight: bold;
+          background-color: $color-light-gray;
+        }
+      }
+    }
+  }
+
+  .p-paginator {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    background-color: $color-light-gray;
+    padding: 0.25rem;
+
+    .p-paginator-current {
+      height: auto;
+    }
+
+    button.p-link {
+      border-radius: 50% !important;
+      transition: none;
+      min-width: 20px;
+      height: 20px;
+      font-size: inherit;
+
+      &.p-highlight {
+        border-color: $color-light-blue;
+        background-color: $color-light-blue;
+        color: $color-white;
+      }
+
+      &-input .p-inputtext {
+        height: 20px;
+        font-size: 14px;
+      }
+    }
+
+    .p-inputnumber-input {
+      text-align: center;
+      padding: 0;
+    }
+
+    .p-dropdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: auto;
+
+      .p-inputtext {
+        padding: 0 0 0 4px;
+      }
+
+      .p-dropdown-trigger {
+        width: auto;
+        padding: 0 6px;
+      }
+
+      &-panel .p-dropdown-items {
+        padding: 4px 0;
+
+        li {
+          padding: 2px 0.25rem;
+
+          &.p-highlight.p-focus {
+            color: $color-white;
+            background-color: $color-light-blue;
+          }
+
+          &:hover {
+            background-color: $color-gray;
+          }
+        }
+      }
+    }
+
+    &-bottom {
+      background-color: $color-light-gray;
+    }
+  }
+}

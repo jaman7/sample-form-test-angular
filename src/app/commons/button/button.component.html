@@ -1,0 +1,31 @@
+<div *ngIf="(buttonConfiguration$ | async)?.length; else singleButton" [class]="customClass">
+  <ng-container *ngFor="let button of buttonConfiguration$ | async; trackByIndex">
+    <ng-container *ngTemplateOutlet="buttonTemplate; context: { button: button }"></ng-container>
+  </ng-container>
+</div>
+
+<ng-template #singleButton>
+  <ng-container *ngIf="config">
+    <ng-container *ngTemplateOutlet="buttonTemplate; context: { button: config }"></ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #buttonTemplate let-button="button">
+  <button
+    [disabled]="button?.disabled"
+    [class.disabled]="button?.disabled"
+    (click)="onClickButton($event, button.id)"
+    [class]="button?.className"
+    [class.round]="button?.isRound"
+    class="button-component"
+    [ngClass]="button?.customClass || ''"
+    nz-tooltip
+    nzTooltipPlacement="top"
+    nzTooltipOverlayClassName="tooltip-btn-top"
+    [nzTooltipTitle]="button?.tooltipTitle | translate"
+  >
+    {{ button?.name ? (button?.name | translate) : '' }}
+    <i *ngIf="button?.icon" nz-icon [nzType]="button?.icon"></i>
+    <ng-content></ng-content>
+  </button>
+</ng-template>

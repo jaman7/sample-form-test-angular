@@ -1,0 +1,46 @@
+html,
+body {
+  height: 100vh;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-weight: 400;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: $fontRoboto !important;
+  font-feature-settings: normal;
+  -moz-osx-font-smoothing: grayscale !important;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+}
+
+a {
+  text-decoration: none;
+}
+
+.main {
+  display: block;
+  background-color: $color-blue;
+  height: 100%;
+
+  & .header {
+    display: flex;
+    padding: 8px 1rem;
+    background-color: $color-light-gray;
+
+    &__logo {
+      display: inline-flex;
+      font-size: 30px;
+      cursor: pointer;
+    }
+  }
+
+  &-section {
+    padding: 1rem;
+  }
+}

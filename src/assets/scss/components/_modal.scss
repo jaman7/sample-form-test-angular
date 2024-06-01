@@ -1,0 +1,53 @@
+.modal-component {
+  font-family: $fontRoboto;
+
+  &.p-dialog {
+    box-shadow: none !important;
+    border: none !important;
+
+    & .p-dialog-header {
+      display: flex;
+      background-color: $color-white;
+      color: $color-dark-color;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      border-bottom: none;
+      text-align: center;
+      font-weight: bold;
+      font-size: 20px;
+      padding: 0.5em;
+      z-index: 1;
+
+      .header {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .title {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          margin-right: 1rem;
+          line-height: initial;
+        }
+      }
+    }
+
+    & .p-dialog-content {
+      background-color: $color-blue;
+      padding: 1rem;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      overflow: hidden;
+      display: block;
+      flex-grow: initial;
+
+      & .actions {
+        margin-top: 1rem;
+        display: flex;
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+.form-elements {
+  width: 100%;
+  white-space: pre;
+  font-family: $fontRoboto;
+  margin: 4px 0;
+
+  &__label {
+    display: flex;
+    font-size: $form-font-size;
+    font-weight: 500;
+    margin-right: 0.5rem;
+    color: $color-white;
+
+    &--required {
+      color: $color-white;
+      font-size: $form-font-size;
+      font-weight: 500;
+      margin-right: 2px;
+      line-height: initial;
+    }
+  }
+
+  &.text-area {
+    display: flex;
+    height: fit-content;
+  }
+
+  & .validator {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+  }
+
+  & .text-area {
+    display: flex;
+    flex-wrap: inherit;
+    width: 100%;
+    border: 1.5px solid $color-lighter-blue;
+    border-radius: 5px;
+    height: auto;
+    padding: 4px;
+    font-family: $fontRoboto;
+    color: $color-dark-color;
+    font-size: $form-font-size;
+
+    &:not(:disabled) {
+      &:hover,
+      &:focus,
+      &:target,
+      &:active,
+      &:focus-within {
+        @extend %hover;
+      }
+    }
+
+    &:disabled {
+      color: $color-dark-color;
+      cursor: not-allowed;
+      border-color: $color-light-gray !important;
+    }
+
+    @extend %invalid-form;
+
+    &::placeholder {
+      font-size: $form-font-size;
+    }
+  }
+
+  & .error-message {
+    font-size: 12px;
+    color: $color-red;
+  }
+}

@@ -1,0 +1,32 @@
+.cdk-overlay-container {
+  z-index: 2500;
+}
+
+.select-component {
+  min-width: 80px;
+  display: block;
+  cursor: pointer;
+  font-size: $form-font-size;
+  font-family: $fontRoboto;
+
+  @extend %invalid-form;
+
+  &-container {
+    display: block;
+    width: 100%;
+    outline: 0;
+    border-radius: 6px;
+    font-size: $form-font-size;
+    cursor: pointer;
+    border: 1.5px solid $color-lighter-blue;
+    background-color: $color-white;
+
+    & .ant-select-selector {
+      padding: 0 5px !important;
+    }
+
+    &.ant-select-disabled .ant-select-selection-item {
+      color: $color-dark-color;
+    }
+  }
+}

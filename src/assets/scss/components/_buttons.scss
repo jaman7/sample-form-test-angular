@@ -1,0 +1,46 @@
+.button-component {
+  font: bold 14px $fontRoboto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-white;
+  background-color: transparent;
+  border: 1px solid $color-white;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease-in-out,
+    border-color 0.3s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $color-light-blue;
+    border-color: $color-light-blue;
+  }
+
+  &.round {
+    border-radius: 50%;
+    border: none;
+    padding: 4px;
+
+    & i {
+      color: $color-blue;
+    }
+
+    &:hover,
+    &:focus {
+      background-color: $color-light-blue;
+
+      & i {
+        color: $color-white;
+      }
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: $color-gray;
+  }
+}

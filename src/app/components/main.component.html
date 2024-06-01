@@ -1,0 +1,10 @@
+<main class="main">
+  <app-header></app-header>
+
+  <section class="main-section" cdkScrollable [@fadeInOut]="getRouterOutletState(outlet)">
+    <router-outlet #outlet="outlet" (activate)="onActivate()" (deactivate)="onDeactivate()"></router-outlet>
+  </section>
+
+  <app-spinner *ngIf="spinnerLoad"></app-spinner>
+</main>
+<p-toast [life]="6000" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'500ms'" />

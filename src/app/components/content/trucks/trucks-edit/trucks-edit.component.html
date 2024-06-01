@@ -1,0 +1,18 @@
+<app-modal
+  [header]="translatePrefix + '.' + modal.type.toLowerCase() | translate"
+  minHeight="auto"
+  [visible]="modal.visible"
+  (closeEvent)="onClose()"
+  (okEvent)="onSave()"
+  [disableOkButton]="!form.valid"
+>
+  <form *ngIf="form" [formGroup]="form">
+    <ng-container *ngFor="let item of formGroupConfig | async; index as index; trackByIndex">
+      <app-form-elements
+        ngDefaultControl
+        [formControl]="form.get(item.formControlName) | formControlPipe"
+        [config]="itemsConfig(item?.config, item?.formControlName)"
+      />
+    </ng-container>
+  </form>
+</app-modal>

@@ -1,0 +1,49 @@
+%invalid-form {
+  &.ng-invalid.ng-touched.ng-dirty,
+  &.ng-pristine.ng-invalid.ng-touched,
+  &.ng-dirty.ng-invalid.ng-untouched,
+  &.invalid,
+  & .ng-invalid.ng-touched.ng-dirty,
+  & .ng-pristine.ng-invalid.ng-touched,
+  & .ng-dirty.ng-invalid.ng-untouched,
+  & .invalid {
+    border-color: $color-red !important;
+    border-width: 2px;
+
+    & .time-picker-component,
+    & .form-cell-date-picker,
+    & .select-component-container {
+      border-color: $color-red !important;
+      border-width: 2px;
+    }
+  }
+}
+
+%scrollbar-v {
+  // &::-webkit-scrollbar {
+  //   width: 8px;
+  //   background: $color-white;
+  //   border-radius: 8px;
+
+  //   &-track {
+  //     border-right: 3px solid $color-white;
+  //     background: $color-white;
+  //     margin: 3px 0;
+  //   }
+
+  //   &-thumb {
+  //     background: $color-light-blue;
+  //     border-radius: 6px 9px 9px 6px;
+  //     border-right: 3px solid $color-white;
+  //     min-height: 100px;
+
+  //     &:hover {
+  //       background: $color-blue;
+  //       cursor: pointer;
+  //     }
+  //   }
+  // }
+
+  // scrollbar-color: $color-light-blue $color-white;
+  // scrollbar-width: thin !important;
+}

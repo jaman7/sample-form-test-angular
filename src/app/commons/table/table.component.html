@@ -1,0 +1,52 @@
+<p-table
+  #table
+  dataKey="id"
+  class="table-component"
+  [rows]="quantity"
+  [value]="lazy ? (rows$ | async) ?? [] : rows"
+  [totalRecords]="lazy ? totalRecords : rows?.length ?? 0"
+  [columns]="columns"
+  [rowsPerPageOptions]="rowPerPageOptions"
+  [paginator]="paginator"
+  [showCurrentPageReport]="showCurrentPageReport"
+  [currentPageReportTemplate]="'common.table.currentPageReportTemplate' | translate"
+  columnResizeMode="expand"
+  selectionMode="single"
+  [showJumpToPageInput]="true"
+  [autoLayout]="true"
+  [lazy]="lazy"
+  [customSort]="true"
+  (onLazyLoad)="onLazyOutput($event)"
+  responsiveLayout="stack"
+>
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngIf="showControls" pFrozenColumn>
+        <span [innerHTML]="'common.table.operations' | translate"></span>
+      </th>
+
+      @for (column of columns; track i; let i = $index) {
+        <th>
+          <div class="header-container">
+            <span #headerSpan [innerHTML]="column.header | translate"></span>
+          </div>
+        </th>
+      }
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row let-index="rowIndex">
+    <tr class="table-body">
+      <td *ngIf="showControls" pFrozenColumn class="operations">
+        <app-button [buttonConfiguration]="buttonConfig" [customClass]="'buttons-container'" (btnClickId)="onClick($event, row)" />
+      </td>
+
+      @for (column of columns; track i; let i = $index) {
+        <td>
+          <div>
+            {{ customizeValue(row[column.field], column) }}
+          </div>
+        </td>
+      }
+    </tr>
+  </ng-template>
+</p-table>

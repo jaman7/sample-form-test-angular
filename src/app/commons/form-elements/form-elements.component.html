@@ -1,0 +1,75 @@
+<div *ngIf="config.header" class="form-elements">
+  <span class="form-elements__label">
+    <span *ngIf="isRequired()" class="form-elements__label--required">*</span>
+    <span [innerHTML]="config.header | translate"></span
+  ></span>
+  <ng-template [ngTemplateOutlet]="formTypes"></ng-template>
+</div>
+
+<ng-template #formTypes>
+  <ng-container [ngSwitch]="config.formCellType">
+    <ng-container *ngSwitchDefault>
+      <p>{{ getValue(config) }}</p>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'input'">
+      <div class="validator">
+        <app-input
+          [ngClass]="'col'"
+          ngDefaultControl
+          [formControl]="formControl"
+          [value]="formControl?.value"
+          [config]="itemsConfig(config)"
+        />
+        <app-validator [control]="formControl" />
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'input-number'">
+      <div class="validator">
+        <app-input
+          [ngClass]="'col'"
+          ngDefaultControl
+          [formControl]="formControl"
+          [value]="formControl?.value"
+          [config]="itemsConfig(config)"
+        />
+        <app-validator [control]="formControl" />
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'text-area'">
+      <div class="validator">
+        <textarea
+          class="text-area"
+          ngDefaultControl
+          [value]="formControl?.value"
+          [formControl]="formControl"
+          nz-input
+          [placeholder]="config?.placeholder | translate"
+          [nzAutosize]="{ minRows: config?.minRows, maxRows: config?.maxRows }"
+          [attr.maxLength]="config?.maxLength"
+          [ngClass]="['col', config.customClass ?? '']"
+        ></textarea>
+        <app-validator [control]="formControl" />
+      </div>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'select'">
+      <div class="validator">
+        <app-select
+          [ngClass]="'col'"
+          ngDefaultControl
+          [formControl]="formControl"
+          [config]="{
+            placeholder: (config.placeholder | translate) ?? '',
+            dictData: config.dictData,
+            mode: 'default'
+          }"
+          class="form-cell-select-app"
+        />
+        <app-validator [control]="formControl" />
+      </div>
+    </ng-container>
+  </ng-container>
+</ng-template>

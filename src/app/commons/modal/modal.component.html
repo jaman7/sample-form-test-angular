@@ -1,0 +1,24 @@
+<p-dialog
+  *ngIf="visible"
+  styleClass="modal-component"
+  [(visible)]="visible"
+  [style]="{ width, minWidth, minHeight, maxWidth }"
+  [closable]="false"
+  [modal]="true"
+  appendTo="body"
+>
+  <ng-template pTemplate="header">
+    <div class="header">
+      <div class="title">{{ header | translate }}</div>
+      <app-button [config]="{ icon: 'close', isRound: true }" (btnClick)="onClickClose()" />
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="content">
+    <ng-content />
+    <div class="actions" *ngIf="!hideDefaultButtons">
+      <app-button [config]="{ name: 'common.buttons.save', disabled: disableOkButton }" (btnClick)="onClickOk()" />
+      <app-button class="ms-3" [config]="{ name: 'common.buttons.cancel' }" (btnClick)="onClickClose()" />
+    </div>
+  </ng-template>
+</p-dialog>

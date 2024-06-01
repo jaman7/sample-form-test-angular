@@ -1,0 +1,33 @@
+<div #formFieldContainer class="select-component">
+  <nz-select
+    #selectContainer
+    [nzMode]="config?.mode"
+    nzShowSearch
+    nzAllowClear
+    (ngModelChange)="changeOption($event)"
+    [id]="config?.formControlName"
+    class="select-component-container"
+    [(ngModel)]="value"
+    [name]="config?.formControlName"
+    nzBorderless="true"
+    [nzDisabled]="isDisabled"
+    (nzBlur)="onBlur()"
+    [nzOptionOverflowSize]="8"
+    [nzDropdownClassName]="config?.dafaultDropDownClass"
+    [nzDropdownMatchSelectWidth]="true"
+    [nzPlaceHolder]="(config?.placeholder | translate) ?? ''"
+    [nzSize]="config?.size"
+    [nzShowArrow]="true"
+    [class.is-disabled]="isDisabled"
+    [class.is-active]="isActive"
+    [class.is-filled]="isFilled"
+  >
+    @for (item of config?.dictData; track $index) {
+      <nz-option nzCustomContent [nzLabel]="returnSelectLabel(item)" [nzValue]="returnSelectValue(item)" [nzHide]="item.id === value">
+        <div>
+          <span [innerText]="returnSelectLabel(item)"></span>
+        </div>
+      </nz-option>
+    }
+  </nz-select>
+</div>
