@@ -31,12 +31,4 @@ export abstract class TrucksEditService extends HttpService {
     statusId: { config: { formCellType: 'select' } },
     description: { config: { formCellType: 'text-area', minRows: 2, maxRows: 6 } },
   };
-
-  statusDict = [
-    { id: 1, displayName: 'LOADING' },
-    { id: 2, displayName: 'TO_JOB' },
-    { id: 3, displayName: 'AT_JOB' },
-    { id: 4, displayName: 'RETURNING' },
-    { id: 5, displayName: 'OUT_OF_SERVICE' },
-  ];
 }

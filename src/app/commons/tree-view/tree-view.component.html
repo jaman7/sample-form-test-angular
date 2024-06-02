@@ -1,0 +1,11 @@
+<div class="tree-view">
+  <ng-container *ngFor="let group of groupedItems | async | objectToArray; trackByIndex">
+    <div class="status-label">{{ group.key }}</div>
+    <div *ngIf="group?.value?.length" class="status-group">
+      <div *ngFor="let item of group?.value; trackByIndex" class="item">
+        <div class="item-code">{{ item?.code }}</div>
+        <div class="item-name">{{ item?.name }}</div>
+      </div>
+    </div>
+  </ng-container>
+</div>

@@ -25,6 +25,8 @@ const { SUCCESS_DATA_SAVED, SUCCESS_UPDATED, ERROR } = Toastr;
 export class TrucksEditComponent extends TrucksEditService implements OnInit, OnDestroy {
   @Input() modal: IModal;
 
+  @Input() dictionaries: IDictType = [];
+
   @Output() closeModal = new EventEmitter<void>();
 
   form: FormGroup<ITrucksForm> = new FormGroup<ITrucksForm>({
@@ -40,10 +42,6 @@ export class TrucksEditComponent extends TrucksEditService implements OnInit, On
   rowId: number;
 
   primaryTitle: string;
-
-  dictionaries: IDictType = {
-    statusId: this.statusDict,
-  };
 
   formGroupConfig: Observable<IFormElements[]> = of(
     setFormConfig(this.formConfig, {

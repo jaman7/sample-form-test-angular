@@ -10,4 +10,6 @@
   (buttonEvent)="onDocAction($event)"
 />
 
-<app-trucks-edit *ngIf="modal.visible" [modal]="modal" (closeModal)="onCloseModal()" />
+<app-trucks-edit *ngIf="modal.visible" [modal]="modal" (closeModal)="onCloseModal()" [dictionaries]="dictionaries" />
+
+<div class="flex-center bg-white"><app-tree-view [data]="(rows$ | async) ?? previousValue" [statusDict]="dictionaries.statusId" /></div>

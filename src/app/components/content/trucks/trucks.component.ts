@@ -11,6 +11,7 @@ import { IColumn, IRowSelected } from '@app/commons/table/table.models';
 import { DocOpenTypes } from '@app/shared/types/doc-types';
 import { Toastr } from '@app/shared/enums/toastr';
 import { MessageService } from 'primeng/api';
+import { IDictType } from '@app/shared/models/dict-type';
 import { TrucksService } from './trucks.service';
 import { ITrucks } from './trucks.model';
 
@@ -48,6 +49,18 @@ export class TrucksComponent extends TrucksService {
     visible: false,
     type: undefined,
     id: undefined,
+  };
+
+  statusDict: IDictType[] = [
+    { id: 1, displayName: 'LOADING' },
+    { id: 2, displayName: 'TO_JOB' },
+    { id: 3, displayName: 'AT_JOB' },
+    { id: 4, displayName: 'RETURNING' },
+    { id: 5, displayName: 'OUT_OF_SERVICE' },
+  ];
+
+  dictionaries: IDictType = {
+    statusId: this.statusDict,
   };
 
   constructor(
