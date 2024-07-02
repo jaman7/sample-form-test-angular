@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      i18n: 'home',
+      i18Local: 'home',
     },
     component: HomeComponent,
     resolve: {

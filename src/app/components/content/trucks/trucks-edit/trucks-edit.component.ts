@@ -142,7 +142,7 @@ export class TrucksEditComponent extends TrucksEditService implements OnInit, On
   filterDict(dict: IDictType[]): IDictType[] {
     const { statusId } = this.form.value || {};
     const ids = this.getFilteredStatusIds(statusId);
-    return dict.filter(el => ids.includes(el?.id as number));
+    return dict.filter(el => (ids?.length ? ids.includes(el?.id as number) : true));
   }
 
   getFilteredStatusIds(statusId: number): number[] {
@@ -161,7 +161,9 @@ export class TrucksEditComponent extends TrucksEditService implements OnInit, On
   }
 
   onClose(): void {
-    this.closeModal.emit();
+    setTimeout(() => {
+      this.closeModal.emit();
+    }, 5);
   }
 
   resetForm(): void {

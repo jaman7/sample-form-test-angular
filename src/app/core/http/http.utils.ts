@@ -15,7 +15,6 @@ export function preparedHttpParamsValue(value: any): string {
   if (Array.isArray(value)) {
     return value.join('&');
   }
-
   return value.toString();
 }
 
@@ -33,7 +32,6 @@ export function toHttpParams(data: ParamsDTO): HttpParams {
   if (!data) {
     return new HttpParams();
   }
-
   return Object.entries(data)
     .filter(([, value]) => value && (getSize(value) > 0 || !Array.isArray(value)))
     .reduce((params, [key, value]) => params.set(key, preparedHttpParamsValue(value)), new HttpParams());

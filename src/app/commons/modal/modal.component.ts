@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { ButtonsTypes, IModalButtons } from './modal.models';
-
-const { CLOSE } = IModalButtons;
 
 @Component({
   selector: 'app-modal',

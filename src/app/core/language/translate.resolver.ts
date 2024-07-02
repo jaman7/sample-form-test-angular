@@ -15,7 +15,7 @@ export class TranslateResolver {
   }
 
   private getRouteTranslatePartials(route: ActivatedRouteSnapshot): string[] {
-    const i18n = route.data.i18n || [];
+    const i18n = route.data.i18Local || [];
     return Array.isArray(i18n) ? i18n : [i18n];
   }
 }

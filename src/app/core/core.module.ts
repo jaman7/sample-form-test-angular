@@ -23,7 +23,7 @@ import { RouterSerializer } from './router/router-serializer';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   const buildJSON = build;
-  return new TranslateHttpLoader(http, 'assets/i18n/', `.json?v=${new Date(buildJSON.timestamp).getTime()}`);
+  return new TranslateHttpLoader(http, 'assets/i18Local/', `.json?v=${new Date(buildJSON.timestamp).getTime()}`);
 }
 
 @NgModule({
@@ -68,7 +68,6 @@ export class CoreModule {
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import only in AppModule');
     }
-
     ServiceLocator.injector = this.injector;
   }
 }

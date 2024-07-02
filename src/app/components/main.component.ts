@@ -14,7 +14,7 @@ import { tap } from 'rxjs';
 export class MainComponent implements OnInit {
   showOutlet = false;
 
-  spinnerLoad = true;
+  isLoading = true;
 
   constructor(
     private loadingService: LoadingService,
@@ -26,7 +26,7 @@ export class MainComponent implements OnInit {
       .pipe(
         untilDestroyed(this),
         tap((loading: boolean) => {
-          this.spinnerLoad = loading;
+          this.isLoading = loading;
         })
       )
       .subscribe();

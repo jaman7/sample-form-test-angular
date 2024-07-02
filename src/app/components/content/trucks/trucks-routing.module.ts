@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      i18n: 'trucks',
+      i18Local: 'trucks',
     },
     component: TrucksComponent,
     resolve: {

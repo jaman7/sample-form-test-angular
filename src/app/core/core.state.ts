@@ -9,30 +9,20 @@ import { RouterStateUrl } from './router/router.state';
 
 export interface AppState {
   language: Language;
-
   router: RouterReducerState<RouterStateUrl>;
 }
-/**
- * Reducers for AppState
- */
+
 export const reducers: ActionReducerMap<AppState> = {
   language: languageReducer,
   router: routerReducer,
 };
 
-/**
- * Meta reducers with initialization state from sessionStorage
- */
 export const metaReducers: MetaReducer<AppState>[] = [initStateFromSessionStorage];
 
-/** Debug information for changes application state */
 if (!env.production) {
   metaReducers.unshift(debug);
 }
 
-/**
- * Select for language state
- */
 export const selectLanguageState = createFeatureSelector<Language>('language');
 
 export const selectRouterState = createFeatureSelector<RouterReducerState<RouterStateUrl>>('router');

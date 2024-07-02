@@ -128,10 +128,12 @@ export class TrucksComponent extends TrucksService {
   }
 
   onCloseModal(): void {
-    this.modal = {
-      visible: false,
-      type: undefined,
-    };
-    this.loadData();
+    setTimeout(() => {
+      this.modal = {
+        visible: false,
+        type: undefined,
+      };
+      this.loadData();
+    }, 5);
   }
 }

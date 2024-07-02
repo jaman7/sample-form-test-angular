@@ -48,7 +48,7 @@ export class LanguageService {
     this.downloadedPartials.add(partial);
     const buildTimestamp = new Date(build?.timestamp).getTime();
 
-    return this.http.get<any>(`assets/i18n/${lang}/${partial}.json?v=${buildTimestamp}`).pipe(
+    return this.http.get<any>(`assets/i18Local/${lang}/${partial}.json?v=${buildTimestamp}`).pipe(
       tap(response => {
         const translations = {
           ...this.translate.translations[lang],
