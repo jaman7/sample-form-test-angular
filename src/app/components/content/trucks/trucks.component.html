@@ -8,6 +8,8 @@
   [rows]="(rows$ | async) ?? previousValue"
   [showControls]="true"
   (buttonEvent)="onDocAction($event)"
+  [lazy]="true"
+  (actionOnData)="onActionSearch($event)"
 />
 
 <app-trucks-edit *ngIf="modal.visible" [modal]="modal" (closeModal)="onCloseModal()" [dictionaries]="dictionaries" />

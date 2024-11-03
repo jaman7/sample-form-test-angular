@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angu
 import { Subject, Observable, of } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { TableLazyLoadEvent } from 'primeng/table';
-import { IColumn, IRowSelected, OperationButtonTypes } from './table.models';
+import { ITableColumn, IRowSelected, MatchModeTypes, OperationButtonTypes } from './table.models';
 import { IButton } from '../button/button.model';
 import { TableButtons, TableButtonsOpenType } from './table.enums';
 
@@ -13,7 +13,7 @@ const { SHOW, EDIT, DELETE } = TableButtons;
   templateUrl: './table.component.html',
 })
 export class TableComponent implements OnInit, OnChanges {
-  private _columns: IColumn[] = [];
+  private _columns: ITableColumn[] = [];
 
   private actionOnDataSubject: Subject<any> = new Subject<any>();
 
@@ -22,6 +22,8 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() rows: any[] = [];
 
   @Input() lazy: boolean = false;
+
+  @Input() allowFilters = true;
 
   @Input() totalRecords: number;
 
@@ -46,14 +48,14 @@ export class TableComponent implements OnInit, OnChanges {
   buttonConfig: IButton[] = [];
 
   @Input()
-  set columns(value: IColumn[]) {
+  set columns(value: ITableColumn[]) {
     if (value?.length) {
       value.forEach(item => (item.visible = true));
     }
     this._columns = value ?? [];
   }
 
-  get columns(): IColumn[] {
+  get columns(): ITableColumn[] {
     return this._columns;
   }
 
@@ -83,7 +85,7 @@ export class TableComponent implements OnInit, OnChanges {
     return Array.from({ length: (stop - start) / step + 1 }, (_, index) => start + index * step);
   }
 
-  customizeValue(value: any, column: IColumn): string {
+  customizeValue(value: any, column: ITableColumn): string {
     return column.customizeValue ? column.customizeValue(value) : value;
   }
 
@@ -100,5 +102,10 @@ export class TableComponent implements OnInit, OnChanges {
       className: 'table-btn',
       tooltipTitle: `common.table.tooltip.${key}`,
     }));
+  }
+
+  getMatchMode(column): MatchModeTypes {
+    const { matchMode, type } = column?.filter || {};
+    return matchMode ?? type === 'select' ? 'equals' : 'contains';
   }
 }

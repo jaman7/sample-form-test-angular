@@ -25,6 +25,7 @@
     "no-descending-specificity": null,
     "selector-class-pattern": null,
     "scss/no-global-function-names": null,
+    "color-no-invalid-hex": true,
     "selector-type-no-unknown": null,
     "selector-pseudo-element-no-unknown": null
   }

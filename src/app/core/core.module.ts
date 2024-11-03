@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -7,19 +7,12 @@ import { MissingTranslationHandler, TranslateLoader, TranslateModule } from '@ng
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Injector, NgModule, Optional, SkipSelf } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
-import { RouterStateSerializer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { metaReducers, reducers } from './core.state';
 import { LanguageEffects } from './language/store';
-import * as build from '../../environments/build.json';
+import build from '@env/build.json';
 import { MissingTranslation } from './language/missing-translation.handler';
 import { LanguageService } from './language/language.service';
-import { LoadingService } from './loading/loading.service';
-import { LoadingInterceptor } from './loading/loading.interceptor';
-import { AuthInterceptor } from './auth/auth.interceptor';
-import { AuthGuard } from './auth/auth.guard';
-import { LocalStorageService } from './local-storage/local-storage.service';
-import { ServiceLocator } from './locator/locator.service';
-import { RouterSerializer } from './router/router-serializer';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   const buildJSON = build;
@@ -47,15 +40,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     }),
   ],
   declarations: [],
-  providers: [
-    AuthGuard,
-    LanguageService,
-    LoadingService,
-    LocalStorageService,
-    { provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true },
-    { provide: RouterStateSerializer, useClass: RouterSerializer },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-  ],
+  providers: [LanguageService],
   exports: [TranslateModule, HttpClientModule],
 })
 export class CoreModule {
@@ -66,8 +51,7 @@ export class CoreModule {
     parentModule: CoreModule
   ) {
     if (parentModule) {
-      throw new Error('CoreModule is already loaded. Import only in AppModule');
+      throw new Error('CoreModule is already loaded.');
     }
-    ServiceLocator.injector = this.injector;
   }
 }

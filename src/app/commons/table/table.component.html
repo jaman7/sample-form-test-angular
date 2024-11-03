@@ -33,6 +33,36 @@
         </th>
       }
     </tr>
+
+    <tr *ngIf="allowFilters" class="row-filters">
+      <th *ngIf="showControls" pFrozenColumn></th>
+      @for (column of columns; track i; let i = $index) {
+        <th>
+          <p-columnFilter
+            class="filters"
+            [ngClass]="column.type === 'Boolean' ? 'filters--boolean' : ''"
+            [type]="column?.filter?.type ?? column.type"
+            [field]="column?.filter?.field ?? column.field"
+            [showMenu]="false"
+            [showClearButton]="false"
+            [matchMode]="getMatchMode(column)"
+          >
+            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <ng-container [ngSwitch]="column?.filter?.type">
+                <ng-container *ngSwitchDefault>
+                  <i class="search-icon" nz-icon [nzType]="'search'"></i>
+                  <input
+                    pInputText
+                    type="text"
+                    [ngModel]="value"
+                    (ngModelChange)="filter($event)"
+                    [placeholder]="'common.table.serach' | translate" /></ng-container
+              ></ng-container>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+      }
+    </tr>
   </ng-template>
   <ng-template pTemplate="body" let-row let-index="rowIndex">
     <tr class="table-body">

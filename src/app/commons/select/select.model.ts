@@ -14,6 +14,8 @@ export interface ISelect {
   dafaultDropDownClass?: string;
 }
 
+export type SelectMode = 'multiple' | 'tags' | 'default';
+
 export const ConfigDefault = (): ISelect => ({
   size: 'default',
   mode: 'default',

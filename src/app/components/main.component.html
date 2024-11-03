@@ -5,6 +5,5 @@
     <router-outlet #outlet="outlet" (activate)="onActivate()" (deactivate)="onDeactivate()"></router-outlet>
   </section>
 
-  <app-spinner *ngIf="isLoading"></app-spinner>
 </main>
 <p-toast [life]="6000" [showTransformOptions]="'translateY(100%)'" [showTransitionOptions]="'1000ms'" [hideTransitionOptions]="'500ms'" />

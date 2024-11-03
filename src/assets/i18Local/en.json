@@ -9,6 +9,7 @@
     "table": {
       "currentPageReportTemplate": "{first} - {last} from {totalRecords}",
       "operations": "Operations",
+      "serach": "Serach",
       "tooltip": {
         "eye": "Browse",
         "edit": "Edit",
